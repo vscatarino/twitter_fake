@@ -8,20 +8,50 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #4AB3F4;
+  min-height: 29vh;
+  width:100%;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*font-size: calc(10px + 2vmin);*/
+  /*color: white;*/
+}
+
+.App-moldura{
+  background: #fff;
+  width: 150px;
+  height: 150px;
+  border-radius: 80px;
+  position: relative;
+  bottom: 110px;
+  left: 2%;
+}
+
+.App-foto-perfil{
+  width: 206px;
+  border-radius: 100px;
+  /*position: absolute;*/
+}
+
+.App-Dados{
+  left: 2%;
+  position: absolute;
+  width: 320px;
+  height: 250px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.App-menu{
+  height: 37px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
