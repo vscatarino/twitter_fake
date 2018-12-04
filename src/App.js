@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 
 import UserComponent from './components/UserComponent';
+import ScoreComponent from "./components/ScoreComponent";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header"></header>
-          
+
         <div className="App-menu">
-         Info
+         <ScoreComponent/>
         </div>
 
         <div className="App-moldura">
