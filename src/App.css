@@ -1,3 +1,7 @@
+body{
+  background: #e6ecf0;
+}
+
 .App {
   text-align: center;
 }
@@ -20,7 +24,7 @@
 }
 
 .App-moldura{
-  background: #fff;
+  /*background: #fff;*/
   width: 150px;
   height: 150px;
   border-radius: 80px;
@@ -36,13 +40,51 @@
 }
 
 .App-Dados{
-  left: 2%;
-  position: absolute;
+  /*left: 2%;*/
+  margin-left: 2%;
+  /*position: absolute;*/
   width: 320px;
-  height: 250px;
+  height: 180px;
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+}
+
+.App-Post{
+  margin-top:10%;
+  width: 716px;
+  min-height: 250px;
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+}
+
+.App-twit{
+  width: 716px;
+  min-height: 150px;
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+}
+
+.App-card{
+  background: #fff;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
+.App-row{
+  display:flex;
+  flex-direction: row;
+}
+
+.App-column{
+  display:flex;
+  flex-direction: column;
+}
+
+.App-posi{
+  left: 10%;
+  position: relative;
+}
+
 
 .App-link {
   color: #61dafb;
@@ -51,6 +93,7 @@
 .App-menu{
   height: 37px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background: #fff;
 }
 @keyframes App-logo-spin {
   from {
