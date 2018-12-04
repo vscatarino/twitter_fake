@@ -109,6 +109,28 @@ body{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   background: #fff;
 }
+
+.App-button{
+  margin-top: 30px;
+  margin-left: 614px;
+  width: 73px;
+  height: 32px;
+  font-weight: 600;
+  background: #4AB3F4;
+  color: #fff;
+  border-radius: 7px;
+}
+
+button:hover{
+  opacity: 0.5;
+}
+
+textarea {
+  resize: none;
+  margin-top: 3%;
+  border: solid 2px #4AB3F4;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
