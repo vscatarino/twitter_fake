@@ -7,18 +7,56 @@ import TweetComponent from "./components/TweetComponent";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { update_user_name } from './state/actions/local_state_action';
+import { update_user_name, update_user_photo, update_user_cover,update_tweet_list } from './state/actions/local_state_action';
+import { fetchActiveApi } from './state/actions/api_actions';
 
 class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = { inputValue:'' }
+    }
+
+    componentDidMount(){
+        this.props.fetchActiveApi();
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        let only = !this.props.api.isFetching && this.props.api.lastRespOk
+        if ((prevProps.api !== this.props.api) && only) {
+           this.props.update_user_name(this.props.api.user_data.name)
+           this.props.update_user_photo(this.props.api.user_data.url_photo)
+           this.props.update_tweet_list(this.props.api.user_data.tweets)
+        }
+    }
+
+    addTweet(e){
+        e.preventDefault();
+        let tweet = {
+            avatar: this.props.api.user_data.url_photo,
+            login:  this.props.api.user_data.login,
+            date:   "05 de dez de 2018",
+            post: this.state.inputValue
+        };
+       let newTweets = this.props.api.user_data.tweets
+       newTweets.unshift(tweet)
+       this.props.update_tweet_list(newTweets)
+        this.setState({inputValue:''})
+    }
+
+    inputChange = event =>{
+        this.setState({inputValue:event.target.value})
+    }
 
   render() {
-      const { localState } = this.props;
+      const { localState, api } = this.props;
+      console.log('teste', this.props.api)
     return (
       <div className="App">
         <header className="App-header"></header>
 
         <div className="App-menu">
-         <ScoreComponent/>
+         <ScoreComponent itens={api.user_data.score || []}/>
         </div>
 
         <div className="App-moldura">
@@ -26,49 +64,44 @@ class App extends Component {
         </div>
 
           <div className="App-row">
-              <UserComponent name={localState.name}/>
+              <UserComponent name={localState.name} data={api.user_data}/>
 
                <div className="App-column App-posi">
-                   <TweetComponent/>
+                   <TweetComponent
+                       addTweet={this.addTweet.bind(this)}
+                       onChange={this.inputChange}
+                       value={this.state.inputValue}
+                   />
 
                    <div className="App-Post App-card" style={{marginBottom:'20px', paddingBottom:'10px'}}>
-                       <TimelineComponent
-                        avatar="https://i.pinimg.com/originals/ae/19/04/ae1904b8ec612779a45d5d2b091140ea.jpg"
-                        login="@jucastanha"
-                        data="05 de dez de 2018"
-                        post="Here's Picard showing the 300 frames of animations I did for nearly 100 characters for Trexels 2."
-                       />
-
-                       <TimelineComponent
-                        avatar="https://avatars1.githubusercontent.com/u/150330?s=460&v=4"
-                        login="@learnjs"
-                        data="04 de dez de 2018"
-                        post="Here's Picard showing the 300 frames of animations I did for nearly 100 characters for Trexels 2."
-                       />
-
-                       <TimelineComponent
-                        avatar="https://pbs.twimg.com/profile_images/378800000176427555/a79bf7992c8b3c21a25024dcda0db0af_400x400.jpeg"
-                        login="@richman"
-                        data="04 de dez de 2018"
-                        post="Here's Picard showing the 300 frames of animations I did for nearly 100 characters for Trexels 2."
-                       />
+                       {
+                          this.props.localState.tweet_list.map((tweet, index) =>{
+                               return(
+                                   <TimelineComponent
+                                       key={index}
+                                       avatar={tweet.avatar}
+                                       login={tweet.login}
+                                       data={tweet.date}
+                                       post={tweet.post}
+                                   />
+                               )
+                           })
+                       }
                    </div>
                </div>
-
           </div>
-
-
-
       </div>
     );
   }
 }
 
 const mapStateToProps = store =>({
-    localState: store.localState
+    localState: store.localState,
+    api: store.api
    });
 
-const mapDispatchToProps = dispatch => bindActionCreators({update_user_name}, dispatch);
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({update_user_name, update_user_photo, update_user_cover, fetchActiveApi, update_tweet_list}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

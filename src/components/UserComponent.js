@@ -28,8 +28,8 @@ export default class UserComponent extends Component{
 
             <span>@jucastanha</span>
 
-            <InfoUserComponent icon={pinDrop} label="Ladário"/>
-            <InfoUserComponent icon={calendar} label="Participa desde dezembro de 2016"/>
+            <InfoUserComponent icon={pinDrop} label={this.props.data.city}/>
+            <InfoUserComponent icon={calendar} label={this.props.data.begin}/>
             <ModalUpdateComponent modalIsOpen={this.state.modalIsOpen} onClose={this.onClose.bind(this)}/>
         </div>
         )

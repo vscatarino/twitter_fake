@@ -1,9 +1,10 @@
-import {UPDATE_USER_NAME, UPDATE_USER_PHOTO, UPDATE_USER_COVER } from '../actions/actionTypes';
+import {UPDATE_USER_NAME, UPDATE_USER_PHOTO, UPDATE_USER_COVER, UPDATE_TWEET_LIST } from '../actions/actionTypes';
 
 const initialState = {
-    name:'JULIANA CASTANHA',
-    photo:'https://i.pinimg.com/originals/ae/19/04/ae1904b8ec612779a45d5d2b091140ea.jpg',
-    cover:''
+    name:'carregando...',
+    photo:'',
+    cover:'',
+    tweet_list:[]
 }
 
 export const local_state_reducer = (state = initialState, action) =>{
@@ -24,6 +25,12 @@ export const local_state_reducer = (state = initialState, action) =>{
             return{
                 ...state,
                 cover: action.payload
+            }
+
+        case UPDATE_TWEET_LIST:
+            return{
+                ...state,
+                tweet_list:action.payload
             }
 
         default:
