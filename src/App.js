@@ -5,9 +5,14 @@ import ScoreComponent from "./components/ScoreComponent";
 import TimelineComponent from "./components/TimelineComponent";
 import TweetComponent from "./components/TweetComponent";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { update_user_name } from './state/actions/local_state_action';
+
 class App extends Component {
 
   render() {
+      const { localState } = this.props;
     return (
       <div className="App">
         <header className="App-header"></header>
@@ -21,7 +26,7 @@ class App extends Component {
         </div>
 
           <div className="App-row">
-              <UserComponent/>
+              <UserComponent name={localState.name}/>
 
                <div className="App-column App-posi">
                    <TweetComponent/>
@@ -59,4 +64,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = store =>({
+    localState: store.localState
+   });
+
+const mapDispatchToProps = dispatch => bindActionCreators({update_user_name}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

@@ -8,7 +8,7 @@ export default class UserComponent extends Component{
         return (
         <div className="App-Dados App-card App-column" style={{padding:'1%', textAlign:'left'}}>
 
-            <span style={{fontWeight: '600', fontSize: '25px'}}>JULIANA CASTANHA</span>
+            <span style={{fontWeight: '600', fontSize: '25px'}}>{this.props.name}</span>
             <span>@jucastanha</span>
 
             <InfoUserComponent icon={pinDrop} label="Ladário"/>
