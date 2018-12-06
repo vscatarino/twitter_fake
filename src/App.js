@@ -13,7 +13,13 @@ import { fetchActiveApi } from './state/actions/api_actions';
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = { inputValue:'' }
+        this.state = {
+            inputValue:'',
+            urlPhotoValue:'',
+            urlCoverValue:'',
+            name:'',
+            modalIsOpen:false
+        }
     }
 
     componentDidMount(){
@@ -21,7 +27,7 @@ class App extends Component {
 
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         let only = !this.props.api.isFetching && this.props.api.lastRespOk
         if ((prevProps.api !== this.props.api) && only) {
            this.props.update_user_name(this.props.api.user_data.name)
@@ -41,16 +47,51 @@ class App extends Component {
        let newTweets = this.props.api.user_data.tweets
        newTweets.unshift(tweet)
        this.props.update_tweet_list(newTweets)
-        this.setState({inputValue:''})
+       this.setState({inputValue:''})
+    }
+
+    // open Modal
+    onOpen(){
+        this.setState({modalIsOpen:true})
+    }
+
+    // close Modal
+    onClose(){
+        this.setState({modalIsOpen:false})
     }
 
     inputChange = event =>{
         this.setState({inputValue:event.target.value})
     }
 
+    photoChange = event =>{
+        this.setState({urlPhotoValue:event.target.value})
+    }
+
+    coverChange = event =>{
+        this.setState({urlCoverValue:event.target.value})
+    }
+
+    nameChange = event =>{
+        this.setState({name:event.target.value})
+    }
+
+    changeInfo(e){
+        e.preventDefault();
+
+        if(this.state.name) this.props.update_user_name(this.state.name)
+        // console.log(this.state.name);
+        console.log(this.state.urlCoverValue);
+        if(this.state.urlPhotoValue) this.props.update_user_photo(this.state.urlPhotoValue)
+
+        this.setState({name:''})
+        this.setState({urlCoverValue:''})
+        this.setState({urlPhotoValue:''})
+        this.onClose()
+    }
+
   render() {
       const { localState, api } = this.props;
-      console.log('teste', this.props.api)
     return (
       <div className="App">
         <header className="App-header"></header>
@@ -64,7 +105,20 @@ class App extends Component {
         </div>
 
           <div className="App-row">
-              <UserComponent name={localState.name} data={api.user_data}/>
+              <UserComponent
+                  name={localState.name}
+                  data={api.user_data}
+                  openModal = {this.onOpen.bind(this)}
+                  closeModal= {this.onClose.bind(this)}
+                  modalIsOpen = {this.state.modalIsOpen}
+                  photoChange = {this.photoChange}
+                  coverChange = {this.coverChange}
+                  nameChange = {this.nameChange}
+                  valueName = {this.state.name}
+                  valueUrlPhoto = {this.state.urlPhotoValue}
+                  valueUrlCover = {this.state.urlCoverValue}
+                  changeInfo = {this.changeInfo.bind(this)}
+              />
 
                <div className="App-column App-posi">
                    <TweetComponent
