@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import close from '../img/close.svg';
+import InputComponent from './InputComponent'
 
 export default class ModalUpdateComponent extends Component{
 
@@ -12,33 +13,25 @@ export default class ModalUpdateComponent extends Component{
                         <img onClick={this.props.closeModal} className="App-close" src={close} alt=""/>
                     </div>
                     <form onSubmit={this.props.changeInfo}>
-                        <div className="App-column" style={{padding:'5px'}}>
-                            <label>URL foto perfil</label>
-                            <input
-                                type="text"
-                                onChange={this.props.photoChange}
-                                value={this.props.valueUrlPhoto}/>
-                        </div>
+                        <InputComponent
+                            label='URL foto perfil'
+                            onchange={this.props.photoChange}
+                            value={this.props.valueUrlPhoto}
+                        />
 
-                        <div className="App-column" style={{padding:'5px'}}>
-                            <label>URL foto capa</label>
-                            <input
-                                type="text"
-                                onChange={this.props.coverChange}
-                                value={this.props.valueUrlCover}
-                            />
-                        </div>
+                        <InputComponent
+                            label='URL foto capa'
+                            onchange={this.props.coverChange}
+                            value={this.props.valueUrlCover}
+                        />
 
-                        <div className="App-column"style={{padding:'5px'}}>
-                            <label>Nome</label>
-                            <input
-                                type="text"
-                                onChange={this.props.nameChange}
-                                value={this.props.valueName}
-                            />
-                        </div>
+                        <InputComponent
+                            label='Nome'
+                            onchange={this.props.nameChange}
+                            value={this.props.valueName}
+                        />
 
-                        <button type="submit" className="App-buttonII">Alterar</button>
+                        <button type="submit" className="App-button-display App-buttonII">Alterar</button>
                     </form>
                 </div>
             </div>

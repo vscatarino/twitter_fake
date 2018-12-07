@@ -12,7 +12,7 @@ export default class TweetComponent extends Component{
                                       maxLength="200"
                                       placeholder="O que você está pensando?"
                                       required  />
-                    <button type="submit" className="App-button">Tweetar</button>
+                    <button type="submit" className="App-button-display App-button">Tweetar</button>
                 </form>
             </div>
         )

@@ -7,7 +7,7 @@ export default class TimelineComponent extends Component{
                 <div className="App-row" style={{padding:'20px'}}>
                     <img className="App-foto-post" src={this.props.avatar} alt="logo" />
                     <div style={{padding: '12px'}}>
-                        <span style={{color:'#657786', fontWeight: '600'}}>{this.props.login}</span> {this.props.data}
+                        <span className='App-fontWeight-600' style={{color:'#657786'}}>{this.props.login}</span> {this.props.data}
                     </div>
                 </div>
                 <div style={{float:'left', padding:'0px 20px', textAlign:'left'}}>

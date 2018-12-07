@@ -9,7 +9,7 @@ export default class ScoreComponent extends Component{
                     this.props.itens.map((item, index) =>{
                         return(
                             <div key={index} className="App-column">
-                                <label style={{fontWeight:'600'}}>{item.label}</label>
+                                <label className='App-fontWeight-600'>{item.label}</label>
                                 <span>{item.number}</span>
                             </div>
                         )

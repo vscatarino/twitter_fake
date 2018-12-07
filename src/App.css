@@ -2,13 +2,18 @@ body{
   background: #e6ecf0;
 }
 
-.App {
-  text-align: center;
+button:hover{
+  opacity: 0.5;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+textarea {
+  resize: none;
+  margin-top: 3%;
+  border: solid 2px #4AB3F4;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -16,16 +21,9 @@ body{
   min-height: 29vh;
   height: 37vh;
   width:100%;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*font-size: calc(10px + 2vmin);*/
-  /*color: white;*/
 }
 
 .App-moldura{
-  /*background: #fff;*/
   width: 150px;
   height: 150px;
   border-radius: 80px;
@@ -37,7 +35,6 @@ body{
 .App-foto-perfil{
   width: 206px;
   border-radius: 100px;
-  /*position: absolute;*/
 }
 
 .App-foto-post{
@@ -48,28 +45,20 @@ body{
 }
 
 .App-Dados{
-  /*left: 2%;*/
   margin-left: 2%;
-  /*position: absolute;*/
   width: 323px;
   height: 180px;
-  /*border-radius: 5px;*/
-  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
 }
 
 .App-Post{
   margin-top:10%;
   width: 716px;
   min-height: 250px;
-  /*border-radius: 5px;*/
-  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
 }
 
 .App-twit{
   width: 716px;
   min-height: 150px;
-  /*border-radius: 5px;*/
-  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
 }
 
 .App-card{
@@ -111,9 +100,7 @@ body{
   background: #fff;
 }
 
-.App-button{
-  margin-top: 30px;
-  margin-left: 614px;
+.App-button-display{
   width: 73px;
   height: 32px;
   font-weight: 600;
@@ -122,30 +109,24 @@ body{
   border-radius: 7px;
 }
 
+.App-button{
+  margin-top: 30px;
+  margin-left: 614px;
+}
+
 .App-buttonII{
   margin-top: 7px;
   margin-left: 351px;
-  width: 73px;
-  height: 32px;
-  font-weight: 600;
-  background: #4AB3F4;
-  color: #fff;
-  border-radius: 7px;
 }
 
 .App-close:hover{
   opacity: 0.5;
 }
 
-button:hover{
-  opacity: 0.5;
+.App-fontWeight-600{
+  font-weight: 600;
 }
 
-textarea {
-  resize: none;
-  margin-top: 3%;
-  border: solid 2px #4AB3F4;
-}
 
 .modal {
   position: fixed;
@@ -171,13 +152,4 @@ textarea {
 
 .l-hide{
   display: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

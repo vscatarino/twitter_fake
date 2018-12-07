@@ -12,7 +12,7 @@ export default class UserComponent extends Component{
         <div className="App-Dados App-card App-column" style={{padding:'1%', textAlign:'left'}}>
 
             <div className="App-row" style={{justifyContent:'space-between'}}>
-                <span style={{fontWeight: '600', fontSize: '25px'}}>{this.props.name}</span>
+                <span className='App-fontWeight-600' style={{fontSize: '25px'}}>{this.props.name}</span>
                 <img onClick={this.props.openModal} style={{width:'25px', height:'25px', cursor:'pointer'}} src={edit} alt="edit"/>
             </div>
 
