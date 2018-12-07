@@ -20,7 +20,6 @@ export const apiReducer = (state = initialState, action) =>{
                 error: false
             };
         case API_SUCCESS:
-            console.log(action.payload.data)
             return{
                 ...state,
                 user_data: {...action.payload.data},

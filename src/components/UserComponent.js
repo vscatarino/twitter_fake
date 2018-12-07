@@ -8,7 +8,6 @@ import edit from '../img/edit.png';
 export default class UserComponent extends Component{
 
     render(){
-        console.log(this.props)
         return (
         <div className="App-Dados App-card App-column" style={{padding:'1%', textAlign:'left'}}>
 

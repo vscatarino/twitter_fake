@@ -32,6 +32,7 @@ class App extends Component {
         if ((prevProps.api !== this.props.api) && only) {
            this.props.update_user_name(this.props.api.user_data.name)
            this.props.update_user_photo(this.props.api.user_data.url_photo)
+           this.props.update_user_cover(this.props.api.user_data.cover_photo)
            this.props.update_tweet_list(this.props.api.user_data.tweets)
         }
     }
@@ -76,13 +77,30 @@ class App extends Component {
         this.setState({name:event.target.value})
     }
 
+    urlIsValid(url){
+        let protocol = url.slice(0,4)
+
+        let image_type = url.slice(-3)
+
+        return protocol.toLowerCase() === 'http' && image_type.toLowerCase() === 'jpg'
+    }
+
     changeInfo(e){
         e.preventDefault();
 
-        if(this.state.name) this.props.update_user_name(this.state.name)
-        // console.log(this.state.name);
-        console.log(this.state.urlCoverValue);
-        if(this.state.urlPhotoValue) this.props.update_user_photo(this.state.urlPhotoValue)
+        if(this.state.name) this.props.update_user_name(this.state.name.substr(0,19))
+
+        if(this.state.urlPhotoValue && this.urlIsValid(this.state.urlPhotoValue)){
+            this.props.update_user_photo(this.state.urlPhotoValue)
+        }else if(this.state.urlPhotoValue !== ''){
+            alert('Digite uma url válida para a foto do perfil!')
+        }
+
+        if(this.state.urlCoverValue && this.urlIsValid(this.state.urlCoverValue)){
+            this.props.update_user_cover(this.state.urlCoverValue)
+        }else if(this.state.urlCoverValue !== ''){
+            alert('Digite uma url válida para a foto da capa!')
+        }
 
         this.setState({name:''})
         this.setState({urlCoverValue:''})
@@ -94,7 +112,9 @@ class App extends Component {
       const { localState, api } = this.props;
     return (
       <div className="App">
-        <header className="App-header"></header>
+        <header className="App-header">
+            <img src={localState.cover} alt="photo_cover" style={{height:'100%', width:'100%'}} />
+        </header>
 
         <div className="App-menu">
          <ScoreComponent itens={api.user_data.score || []}/>
